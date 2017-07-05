@@ -14,8 +14,8 @@ export default class Details extends Component {
     return(
       <ScrollView style={styles.drinkDetails} contentContainerStyle={styles.contentContainer}>
         <View style={styles.container}>
-          <Text>{myData[index].title}</Text>
-          <Text>{myData[index].ingredients}</Text>
+          <Text style={styles.imageTitle}>{myData[index].title}</Text>
+          <Text style={styles.imageIngredients}>{myData[index].ingredients}</Text>
           <Image source={{uri: myData[index].image}} style={styles.coffeeImage} />
         </View>
         <View style={styles.container}>
@@ -36,30 +36,43 @@ export default class Details extends Component {
 }
 
 const styles = StyleSheet.create({
+  imageTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  imageIngredients: {
+    fontWeight: '100',
+    marginTop: 20,
+    marginBottom: 40
+  },
   contentContainer: {
-    // backgroundColor: 'yellow'
   },
+
   drinkDetails: {
-    backgroundColor: '#EAEAEA'
+    backgroundColor: '#EAEAEA',
+    marginTop: 30
   },
+
   container: {
     backgroundColor: '#FFF',
     borderColor: 'lightgrey',
-    marginTop: 20,
     borderWidth: 1,
-    marginRight: 10,
-    marginLeft: 10,
+    marginBottom: 9,
+    marginRight: 14,
+    marginLeft: 14,
     alignItems: 'center',
-    paddingBottom: 10,
-    paddingTop: 10
+    padding: 10,
   },
 
   coffeeImage: {
     height: 100,
-    width: 100
+    width: 100,
+    marginBottom: 20
   },
 
   title: {
+    alignSelf: 'flex-start',
     fontWeight: 'bold',
+    marginBottom: 10
   }
 })
