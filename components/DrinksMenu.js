@@ -5,7 +5,7 @@ import {
   Text,
   StyleSheet,
   ListView,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import Header from './Header';
 import Coffee from './Coffee';

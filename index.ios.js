@@ -9,6 +9,7 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
+  StatusBar,
   View
 } from 'react-native';
 import DrinksMenu from './components/DrinksMenu';
@@ -18,16 +19,16 @@ import {
 } from 'react-navigation';
 
 
-// export default class BaristameProject extends Component {
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         {/* <DrinksMenu myData={myData} /> */}
-//         <Details myData={myData} index={0} />
-//       </View>
-//     );
-//   }
-// }
+export default class BaristameProject extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <StatusBar barStyle={'light-content'} />
+        <App />
+      </View>
+    );
+  }
+}
 
 const App = StackNavigator({
   DrinksMenu: {screen: DrinksMenu},
@@ -42,4 +43,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('BaristameProject', () => App);
+AppRegistry.registerComponent('BaristameProject', () => BaristameProject);

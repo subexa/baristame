@@ -13,9 +13,10 @@ export default class Details extends Component {
       backgroundColor: '#2A2A2A'
     },
     headerBackTitleStyle: {
-      fontSize: 25
+      fontSize: 25,
+      color: '#FFF'
     },
-    headerTintColor: '#FFF'
+    headerTintColor: 'grey'
   }
   render() {
     const myData = this.props.navigation.state.params.myData;
