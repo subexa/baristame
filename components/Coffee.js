@@ -4,19 +4,22 @@ import {
   Text,
   Image,
   StyleSheet,
+  TouchableOpacity
 } from 'react-native';
 
 export default class Coffee extends Component {
   render() {
-    const myData = this.props.myData; 
+    const myData = this.props.myData;
     return(
-      <View style={styles.coffeeContainer}>
+      <TouchableOpacity style={styles.coffeeContainer} 
+        onPress={() => this.props.navigate('Details', {myData: myData})}
+        title="Go to Lucy's profile">
         <Image style={styles.coffeeImage} source={{uri: myData.image}} />
         <View style={styles.coffeeDescription}>
           <Text style={styles.title}>{myData.title}</Text>
-          <Text style={styles.description}>{myData.description}</Text>
+          <Text style={styles.ingredients}>{myData.ingredients}</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
@@ -39,7 +42,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  description: {
+  ingredients: {
     fontSize: 12,
     fontWeight: '100',
     color: 'grey'

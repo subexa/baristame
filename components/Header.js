@@ -21,13 +21,13 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     backgroundColor: '#2A2A2A',
-    marginTop: 17,
-    height: 45,
+    height: 64,
+    alignItems: 'center',
     paddingTop: 7,
     paddingLeft: 7
   },
   fontStyle: {
-    fontSize: 27,
+    fontSize: 28,
     fontWeight: 'bold',
   }
 })

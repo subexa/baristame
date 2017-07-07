@@ -8,27 +8,35 @@ import {
 } from 'react-native';
 
 export default class Details extends Component {
+  static navigationOptions = {
+    headerStyle: {
+      backgroundColor: '#2A2A2A'
+    },
+    headerBackTitleStyle: {
+      fontSize: 25
+    },
+    headerTintColor: '#FFF'
+  }
   render() {
-    const myData = this.props.myData;
-    const index = this.props.index;
+    const myData = this.props.navigation.state.params.myData;
     return(
       <ScrollView style={styles.drinkDetails} contentContainerStyle={styles.contentContainer}>
         <View style={styles.container}>
-          <Text style={styles.imageTitle}>{myData[index].title}</Text>
-          <Text style={styles.imageIngredients}>{myData[index].ingredients}</Text>
-          <Image source={{uri: myData[index].image}} style={styles.coffeeImage} />
+          <Text style={styles.imageTitle}>{myData.title}</Text>
+          <Text style={styles.imageIngredients}>{myData.ingredients}</Text>
+          <Image source={{uri: myData.image}} style={styles.coffeeImage} />
         </View>
         <View style={styles.container}>
           <Text style={styles.title}>DESCRIPTION</Text>
-          <Text style={styles.description}>{myData[index].description}</Text>
+          <Text style={styles.description}>{myData.description}</Text>
         </View>
         <View style={styles.container}>
           <Text style={styles.title}>Perfect Pull</Text>
-          <Text>{myData[index].perfectPull}</Text>
+          <Text>{myData.perfectPull}</Text>
         </View>
         <View style={styles.container}>
           <Text style={styles.title}>Variation</Text>
-          <Text>{myData[index].variation}</Text>
+          <Text>{myData.variation}</Text>
         </View>
       </ScrollView>
     );
@@ -36,6 +44,9 @@ export default class Details extends Component {
 }
 
 const styles = StyleSheet.create({
+  headerStyle: {
+    backgroundColor: '#2A2A2A',
+  },
   imageTitle: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -50,7 +61,6 @@ const styles = StyleSheet.create({
 
   drinkDetails: {
     backgroundColor: '#EAEAEA',
-    marginTop: 30
   },
 
   container: {
