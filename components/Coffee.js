@@ -8,16 +8,29 @@ import {
 } from 'react-native';
 
 export default class Coffee extends Component {
+  
+  getIngredients (ingredients) {
+    return ingredients.map(
+      ingredient => 
+        ingredient.name.toUpperCase()
+      )
+      .join(', ');
+  }
+
   render() {
     const myData = this.props.myData;
     return(
       <TouchableOpacity style={styles.coffeeContainer} 
         onPress={() => this.props.navigate('Details', {myData: myData})}
         title="Go to Lucy's profile">
-        <Image style={styles.coffeeImage} source={{uri: myData.image}} />
+        <View style={styles.imageContainer}>
+          <Image style={styles.coffeeImage} source={{uri: myData.image}} />
+        </View>
         <View style={styles.coffeeDescription}>
-          <Text style={styles.title}>{myData.title}</Text>
-          <Text style={styles.ingredients}>{myData.ingredients}</Text>
+        <Text style={styles.title}>{myData.title.toUpperCase()}</Text>
+        <Text style={styles.ingredients}>
+          {this.getIngredients(myData.ingredients)}
+        </Text>
         </View>
       </TouchableOpacity>
     );
@@ -31,9 +44,18 @@ const styles = StyleSheet.create({
     paddingBottom: 3,
     borderColor: 'lightgrey'
   },
-  coffeeImage: {
+  imageContainer: {
     height: 70,
-    width: 70
+    width: 70,
+    backgroundColor: 'lightgrey',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  coffeeImage: {
+    backgroundColor: 'lightgrey',
+    resizeMode: 'contain',
+    height: 40,
+    width: 40,
   },
   coffeeDescription: {
     paddingLeft: 7

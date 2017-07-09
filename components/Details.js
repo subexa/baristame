@@ -18,13 +18,20 @@ export default class Details extends Component {
     },
     headerTintColor: 'grey'
   }
+
+  getIngredients(ingredients) {
+    return ingredients.map( ingredient => ingredient.name.toUpperCase() ).join(', ')
+  }
+
   render() {
     const myData = this.props.navigation.state.params.myData;
     return(
       <ScrollView style={styles.drinkDetails} contentContainerStyle={styles.contentContainer}>
         <View style={styles.container}>
-          <Text style={styles.imageTitle}>{myData.title}</Text>
-          <Text style={styles.imageIngredients}>{myData.ingredients}</Text>
+          <Text style={styles.imageTitle}>{myData.title.toUpperCase()}</Text>
+          <Text style={styles.imageIngredients}>
+            {this.getIngredients(myData.ingredients)}
+          </Text>
           <Image source={{uri: myData.image}} style={styles.coffeeImage} />
         </View>
         <View style={styles.container}>
@@ -76,8 +83,9 @@ const styles = StyleSheet.create({
   },
 
   coffeeImage: {
-    height: 100,
-    width: 100,
+    resizeMode: 'contain',
+    height: 140,
+    width: 140,
     marginBottom: 20
   },
 

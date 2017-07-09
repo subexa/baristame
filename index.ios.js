@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from 'react';
+import thunkMiddleware from 'redux-thunk';
 import {
   AppRegistry,
   StyleSheet,
@@ -12,19 +13,25 @@ import {
   StatusBar,
   View
 } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 import DrinksMenu from './components/DrinksMenu';
 import Details from './components/Details';
+import rootReducer from './components/reducers/rootReducer';
 import {
   StackNavigator
 } from 'react-navigation';
 
+let store = createStore(rootReducer,applyMiddleware(thunkMiddleware));
 
 export default class BaristameProject extends Component {
   render() {
     return (
       <View style={styles.container}>
         <StatusBar barStyle={'light-content'} />
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </View>
     );
   }
